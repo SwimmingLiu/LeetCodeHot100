@@ -1,6 +1,9 @@
 package com.swimmingliu.linkedlist;
 
-class ListNode {
+
+
+public class ReorderLink {
+    public  static class ListNode {
     int val;
     ListNode next;
 
@@ -9,8 +12,6 @@ class ListNode {
         next = null;
     }
 }
-
-public class ReorderLink {
 
     public static ListNode reverseList(ListNode head){
         ListNode nodeHead = head;

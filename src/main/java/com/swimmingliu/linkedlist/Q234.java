@@ -1,6 +1,9 @@
 package com.swimmingliu.linkedlist;
 
-public class Q206 {
+/**
+ * 234. 回文链表
+ */
+public class Q234 {
     public static class ListNode {
         int val;
         ListNode next;
@@ -20,9 +23,9 @@ public class Q206 {
 
     public static ListNode reverseList(ListNode head) {
         if (head == null)
-            return head;
-        ListNode nodeHead = head;
+            return null;
         ListNode node = head.next;
+        ListNode nodeHead = head;
         while (node != null) {
             ListNode nodeNext = node.next;
             node.next = nodeHead;
@@ -33,8 +36,26 @@ public class Q206 {
         return nodeHead;
     }
 
+    public static boolean isPalindrome(ListNode head) {
+        ListNode node = head;
+        ListNode midNode = head;
+        while (node != null && node.next != null) {
+            midNode = midNode.next;
+            node = node.next.next;
+        }
+        node = head;
+        midNode = reverseList(midNode);
+        while (midNode != null) {
+            if (node.val != midNode.val)
+                return false;
+            midNode = midNode.next;
+            node = node.next;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        int[] list = {1, 2, 3, 4, 5};
+        int[] list = {1};
         ListNode listNode = new ListNode(list[0]);
         ListNode listHead = listNode;
         for (int i = 1; i < list.length; i++) {
@@ -42,10 +63,7 @@ public class Q206 {
             listNode.next = node;
             listNode = node;
         }
-        ListNode result = reverseList(listHead);
-        while (result != null) {
-            System.out.println(result.val);
-            result = result.next;
-        }
+        boolean result = isPalindrome(listHead);
+        System.out.println(result);
     }
 }
