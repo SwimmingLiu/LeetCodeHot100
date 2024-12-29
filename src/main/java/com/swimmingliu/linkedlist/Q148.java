@@ -1,9 +1,5 @@
 package com.swimmingliu.linkedlist;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * 148. 排序链表
  * 给你链表的头结点 head ，请将其按升序排列并返回排序后的链表 。
