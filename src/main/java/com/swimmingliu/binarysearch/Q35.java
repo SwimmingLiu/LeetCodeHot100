@@ -10,7 +10,7 @@ import java.util.List;
  * 请必须使用时间复杂度为 O(log n) 的算法。
  */
 public class Q35 {
-    // 二分查找 -> 递归版本
+//    // 二分查找 -> 递归版本
 //    public static int searchInsert(int[] nums, int target) {
 //        return binarySearch(0, nums.length - 1, nums, target);
 //    }
@@ -19,26 +19,25 @@ public class Q35 {
 //        if (left > right) return left;
 //        int mid = (left + right) / 2;
 //        if (nums[mid] == target) return mid;
-//        if (nums[mid] < target) return binarySearch(left + 1, right, nums, target);
-//        else return binarySearch(left, right - 1, nums, target);
+//        if (nums[mid] < target) return binarySearch(mid + 1, right, nums, target);
+//        else return binarySearch(left, mid - 1, nums, target);
 //    }
 
     // 二分查找 -> 循环版本
     public static int searchInsert(int[] nums, int target) {
        int left = 0, right = nums.length - 1;
        while (left <= right){
-           int mid = (left + right) / 2;
-           if (nums[mid] == target) return mid;
-           else if (nums[mid] < target) left ++;
-           else right --;
+           int mid = left + (right - left) / 2; // 防止int溢出
+           if (nums[mid] < target) left = mid + 1;
+           else right = mid - 1;
        }
        return left;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = {1, 3, 5, 6};
-        int target = 2;
+        int[] nums = {1, 2, 3, 5, 6};
+        int target = 4;
         System.out.println(searchInsert(nums, target));
     }
 }
