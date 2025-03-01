@@ -46,7 +46,7 @@ public class Q128 {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums) map.put(num, num);
         for (int num : nums) {
-            if (map.containsKey(num - 1)) continue;
+            if (map.containsKey(num - 1)) continue; // 找每一组数据的开始位置
             int right = map.get(num);
             while (map.containsKey(right + 1)){
                 right = map.get(right + 1);
