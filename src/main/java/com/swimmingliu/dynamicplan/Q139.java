@@ -38,7 +38,7 @@ public class Q139 {
 //    }
 
     // 递归 -> 递推
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public static boolean wordBreak(String s, List<String> wordDict) {
         HashSet<String> wordSet = new HashSet<>(wordDict);
         int maxLen = 0;
         for (String string : wordSet) maxLen = Math.max(maxLen, string.length());
